@@ -10,8 +10,22 @@ app.use(cors());
 
 app.post("/register", async (req, res) => {
   let user = new User(req.body);
-  const result = await user.save();
+  let result = await user.save();
+  result = result.toObject();
+  delete result.password;
   res.send(result);
+});
+
+app.post("/login", async (req, res) => {
+  let user = await User.findOne(req.body);
+  if (user) {
+    res.send({
+      result: "login successfull",
+      status: 200,
+    });
+  } else {
+    res.send({ result: "Invalid Username or Password", status: 400 });
+  }
 });
 
 app.listen(8000);
