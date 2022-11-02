@@ -21,6 +21,7 @@ app.post("/login", async (req, res) => {
   if (user) {
     res.send({
       result: "login successfull",
+      data: user,
       status: 200,
     });
   } else {

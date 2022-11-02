@@ -27,13 +27,14 @@ const Nav = () => {
           </li>
 
           <li>
-            <Link to='/logout' onClick={logoutHandler}>
+            <Link to='/login' onClick={logoutHandler}>
               Logout
             </Link>
           </li>
+          <li className='user-li'>welcome {JSON.parse(auth).data.name}</li>
         </ul>
       ) : (
-        <ul className='nav-ul'>
+        <ul className='nav-ul nav-right'>
           <li>
             <Link to='/signup'>Signup</Link>
           </li>

@@ -15,10 +15,7 @@ function App() {
           <Route path='/add' element={<h1>add product</h1>}></Route>
           <Route path='/update' element={<h1>update product</h1>}></Route>
           <Route path='/profile' element={<h1>profile</h1>}></Route>
-          <Route
-            path='/logout'
-            element={<h2>you have been logged out</h2>}
-          ></Route>
+          <Route path='/logout'></Route>
         </Route>
 
         <Route path='/signup' element={<Signup />}></Route>
