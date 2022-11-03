@@ -6,13 +6,14 @@ import Signup from "./components/Signup";
 import Private from "./components/Private";
 import Login from "./components/Login";
 import AddProduct from "./components/AddProduct";
+import Home from "./components/Home";
 function App() {
   return (
     <div className='App'>
       <Nav />
       <Routes>
         <Route element={<Private />}>
-          <Route path='/' element={<h1>home</h1>}></Route>
+          <Route path='/' element={<Home />}></Route>
           <Route path='/add' element={<AddProduct />}></Route>
           <Route path='/update' element={<h1>update product</h1>}></Route>
           <Route path='/profile' element={<h1>profile</h1>}></Route>

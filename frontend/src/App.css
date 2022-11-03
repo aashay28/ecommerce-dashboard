@@ -76,3 +76,19 @@
   margin-left: 1rem;
   font-size: 12px;
 }
+.product-list {
+  text-align: center;
+  margin-top: 1rem;
+}
+.product-list ul li {
+  display: inline-block;
+  padding: 15px;
+  width: 15%;
+  border: 1px solid #777;
+}
+.product-list ul {
+  margin: 0;
+}
+.heading li {
+  background-color: rgba(119, 119, 119, 0.5);
+}

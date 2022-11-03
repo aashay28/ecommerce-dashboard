@@ -4,6 +4,7 @@ require("./db/config");
 const User = require("./db/User");
 const Product = require("./db/Products");
 const mongoose = require("mongoose");
+const Products = require("./db/Products");
 const app = express();
 
 app.use(express.json());
@@ -49,11 +50,18 @@ app.post("/add-product", async (req, res) => {
 });
 app.get("/all-product", async (req, res) => {
   const allProducts = await Product.find();
-  res.send({
-    result: "product added sucessfully",
-    data: allProducts,
-    status: 200,
-  });
+  if (Products.length > 0) {
+    res.send({
+      result: "product added sucessfully",
+      data: allProducts,
+      status: 200,
+    });
+  } else {
+    res.send({
+      result: "No products to be displayed",
+      status: 200,
+    });
+  }
 });
 
 app.listen(8000);
