@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("./db/config");
 const User = require("./db/User");
+const Product = require("./db/Products");
 const mongoose = require("mongoose");
 const app = express();
 
@@ -13,11 +14,15 @@ app.post("/register", async (req, res) => {
   let result = await user.save();
   result = result.toObject();
   delete result.password;
-  res.send(result);
+  res.send({
+    result: "login successfull",
+    data: result,
+    status: 200,
+  });
 });
 
 app.post("/login", async (req, res) => {
-  let user = await User.findOne(req.body);
+  let user = await User.findOne(req.body).select("-password");
   if (user) {
     res.send({
       result: "login successfull",
@@ -27,6 +32,28 @@ app.post("/login", async (req, res) => {
   } else {
     res.send({ result: "Invalid Username or Password", status: 400 });
   }
+});
+app.post("/add-product", async (req, res) => {
+  let product = new Product(req.body);
+
+  if (product) {
+    let result = await product.save();
+    res.send({
+      result: "product added sucessfully",
+      data: result,
+      status: 200,
+    });
+  } else {
+    res.send({ result: "Invalid Username or Password", status: 400 });
+  }
+});
+app.get("/all-product", async (req, res) => {
+  const allProducts = await Product.find();
+  res.send({
+    result: "product added sucessfully",
+    data: allProducts,
+    status: 200,
+  });
 });
 
 app.listen(8000);

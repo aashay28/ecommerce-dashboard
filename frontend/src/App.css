@@ -28,10 +28,14 @@
 .signup {
   display: flex;
   flex-direction: column;
-  margin-left: 60%;
+  margin-left: 30%;
+  margin-right: 30%;
   padding: 1rem;
 }
 .signup h2 {
+  text-align: center;
+}
+.product h2 {
   text-align: center;
 }
 .signup button {
@@ -50,4 +54,25 @@
 }
 .nav-right {
   text-align: right;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 1rem;
+}
+.product button {
+  text-align: center;
+  width: 96%;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #777;
+  color: #fff;
+  border: 0;
+}
+.invalid-input {
+  color: red;
+  margin-left: 1rem;
+  font-size: 12px;
 }

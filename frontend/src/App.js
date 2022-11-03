@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Private from "./components/Private";
 import Login from "./components/Login";
+import AddProduct from "./components/AddProduct";
 function App() {
   return (
     <div className='App'>
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route element={<Private />}>
           <Route path='/' element={<h1>home</h1>}></Route>
-          <Route path='/add' element={<h1>add product</h1>}></Route>
+          <Route path='/add' element={<AddProduct />}></Route>
           <Route path='/update' element={<h1>update product</h1>}></Route>
           <Route path='/profile' element={<h1>profile</h1>}></Route>
           <Route path='/logout'></Route>
