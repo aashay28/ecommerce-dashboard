@@ -85,6 +85,7 @@
   padding: 15px;
   width: 15%;
   border: 1px solid #777;
+  line-height: 2rem;
 }
 .product-list ul {
   margin: 0;

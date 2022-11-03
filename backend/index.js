@@ -52,13 +52,52 @@ app.get("/all-product", async (req, res) => {
   const allProducts = await Product.find();
   if (Products.length > 0) {
     res.send({
-      result: "product added sucessfully",
+      result: "product displayed sucessfully",
       data: allProducts,
       status: 200,
     });
   } else {
     res.send({
       result: "No products to be displayed",
+      status: 200,
+    });
+  }
+});
+app.delete("/product/:id", async (req, res) => {
+  const result = await Product.deleteOne({ _id: req.params.id });
+
+  res.send({
+    result: "product deleted sucessfully",
+    data: result,
+    status: 200,
+  });
+});
+
+app.get("/product/:id", async (req, res) => {
+  let result = await Product.findOne({ _id: req.params.id });
+  if (result) {
+    res.send({
+      result: "product updated sucessfully",
+      data: result,
+      status: 200,
+    });
+  } else {
+    res.send({
+      result: "No result found",
+      status: 200,
+    });
+  }
+});
+
+app.put("/product/:id", async (req, res) => {
+  let result = await Product.updateOne(
+    { _id: req.params.id },
+    { $set: req.body }
+  );
+  if (result) {
+    res.send({
+      result: "product updated sucessfully",
+      data: result,
       status: 200,
     });
   }
