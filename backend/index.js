@@ -103,4 +103,22 @@ app.put("/product/:id", async (req, res) => {
   }
 });
 
+app.get("/search/:key", async (req, res) => {
+  let result = await Product.find({
+    $or: [
+      { name: { $regex: req.params.key } },
+      { company: { $regex: req.params.key } },
+      { category: { $regex: req.params.key } },
+      { price: { $regex: req.params.key } },
+    ],
+  });
+  if (result) {
+    res.send({
+      result: "product found sucessfully",
+      data: result,
+      status: 200,
+    });
+  }
+});
+
 app.listen(8000);
