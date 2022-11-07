@@ -8,13 +8,20 @@ const Home = () => {
   }, []);
   const getProducts = async () => {
     const result = await (
-      await fetch("http://localhost:8000/all-product")
+      await fetch("http://localhost:8000/all-product", {
+        headers: {
+          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      })
     ).json();
     setProducts(result);
   };
   const DeleteHandler = async (id) => {
     let result = await fetch(`http://localhost:8000/product/${id}`, {
       method: "Delete",
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
     });
     result = await result.json();
     if (result) {
@@ -24,7 +31,13 @@ const Home = () => {
   const searchHandler = async (e) => {
     if (e.target.value) {
       let result = await (
-        await fetch(`http://localhost:8000/search/${e.target.value}`)
+        await fetch(`http://localhost:8000/search/${e.target.value}`, {
+          headers: {
+            authorization: `bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        })
       ).json();
       setProducts(result);
     } else {

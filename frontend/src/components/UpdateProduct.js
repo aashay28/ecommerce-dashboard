@@ -9,9 +9,14 @@ const UpdateProduct = () => {
     getProductDetails();
   }, []);
   const getProductDetails = async () => {
-    const result = await (
-      await fetch(`http://localhost:8000/product/${params.id}`)
-    ).json();
+    const result = await (await fetch(
+      `http://localhost:8000/product/${params.id}`
+    ),
+    {
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+    }).json();
     setProduct(result.data);
   };
   console.log("product", product);
@@ -30,6 +35,7 @@ const UpdateProduct = () => {
       body: JSON.stringify(product),
       headers: {
         "Content-Type": "application/json",
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     });
     result = await result.json();

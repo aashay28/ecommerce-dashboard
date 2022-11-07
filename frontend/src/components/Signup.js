@@ -18,6 +18,7 @@ const Signup = () => {
 
     if (result) {
       localStorage.setItem("user", JSON.stringify(result));
+      localStorage.setItem("token", JSON.stringify(result.auth));
       navigate("/");
       setName("");
       setEmail("");
