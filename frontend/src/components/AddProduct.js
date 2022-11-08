@@ -22,7 +22,7 @@ const AddProduct = () => {
       setError(true);
       return;
     }
-    let result = await fetch("http://localhost:8000/add-product", {
+    let result = await fetch("http://localhost:8000/product", {
       method: "post",
       body: JSON.stringify(product),
       headers: {

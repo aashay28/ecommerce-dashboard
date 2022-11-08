@@ -8,7 +8,7 @@ const Home = () => {
   }, []);
   const getProducts = async () => {
     const result = await (
-      await fetch("http://localhost:8000/all-product", {
+      await fetch("http://localhost:8000/product", {
         headers: {
           authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -31,7 +31,7 @@ const Home = () => {
   const searchHandler = async (e) => {
     if (e.target.value) {
       let result = await (
-        await fetch(`http://localhost:8000/search/${e.target.value}`, {
+        await fetch(`http://localhost:8000/product/search/${e.target.value}`, {
           headers: {
             authorization: `bearer ${JSON.parse(
               localStorage.getItem("token")

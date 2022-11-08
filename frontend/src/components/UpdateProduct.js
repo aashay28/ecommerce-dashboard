@@ -9,17 +9,16 @@ const UpdateProduct = () => {
     getProductDetails();
   }, []);
   const getProductDetails = async () => {
-    const result = await (await fetch(
-      `http://localhost:8000/product/${params.id}`
-    ),
-    {
+    let result = await fetch(`http://localhost:8000/product/${params.id}`, {
+      method: "get",
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
-    }).json();
+    });
+    result = await result.json();
     setProduct(result.data);
   };
-  console.log("product", product);
+
   const user = localStorage.getItem("user");
   const collectData = async () => {
     if (
